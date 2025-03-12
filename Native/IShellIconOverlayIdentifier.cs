@@ -105,6 +105,8 @@ namespace OneDrive.Native {
         static public uint GetStateBySyncRootId(string SyncRootId, out OneDriveState State) {
             State = new OneDriveState();
             uint hr;
+            if (SyncRootId is null)
+                return 1;
             if (Marshal.SizeOf(IntPtr.Zero) == 8)
                 hr = GetStatusByTypeApi(SyncRootId, ref State);
             else
